@@ -35,7 +35,6 @@ export function useMetaMask() {
   useEffect(() => {
     if (!window.ethereum) return;
 
-    // 👇 ĐOẠN CODE MỚI QUAN TRỌNG: Tự động check kết nối khi tải trang
     const checkConnection = async () => {
       try {
         const accounts = await window.ethereum.request({
@@ -53,8 +52,7 @@ export function useMetaMask() {
       }
     };
 
-    checkConnection(); // <--- Gọi hàm check ngay lập tức
-    // 👆 HẾT ĐOẠN MỚI
+    checkConnection();
 
     const handleAccountsChanged = (accounts: string[]) =>
       setAccount(accounts[0] || null);
